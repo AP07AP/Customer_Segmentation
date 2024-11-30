@@ -47,10 +47,17 @@ with st.form("my_form"):
     prc_full_payment = st.number_input(label='PRC Full Payment', value=random.uniform(0, 1), step=0.01, format="%.6f")
     tenure = st.number_input(label='Tenure', value=random.randint(6, 12), step=1)
 
-    # Collect the input data into a list
-    data = [[balance, balance_frequency, purchases, oneoff_purchases, installments_purchases, cash_advance, 
-             purchases_frequency, oneoff_purchases_frequency, purchases_installment_frequency, cash_advance_frequency, 
-             cash_advance_trx, purchases_trx, credit_limit, payments, minimum_payments, prc_full_payment, tenure]]
+    # Collect the input data into a DataFrame with the correct feature names
+    feature_columns = [
+        'BALANCE', 'BALANCE_FREQUENCY', 'PURCHASES', 'ONEOFF_PURCHASES', 'INSTALLMENTS_PURCHASES', 'CASH_ADVANCE',
+        'PURCHASES_FREQUENCY', 'ONEOFF_PURCHASES_FREQUENCY', 'PURCHASES_INSTALLMENTS_FREQUENCY', 'CASH_ADVANCE_FREQUENCY',
+        'CASH_ADVANCE_TRX', 'PURCHASES_TRX', 'CREDIT_LIMIT', 'PAYMENTS', 'MINIMUM_PAYMENTS', 'PRC_FULL_PAYMENT', 'TENURE'
+    ]
+    
+    data = pd.DataFrame([[balance, balance_frequency, purchases, oneoff_purchases, installments_purchases, cash_advance, 
+                          purchases_frequency, oneoff_purchases_frequency, purchases_installment_frequency, cash_advance_frequency, 
+                          cash_advance_trx, purchases_trx, credit_limit, payments, minimum_payments, prc_full_payment, tenure]], 
+                        columns=feature_columns)
 
     submitted = st.form_submit_button("Submit")
 
