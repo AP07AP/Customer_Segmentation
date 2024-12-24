@@ -1,9 +1,6 @@
 from sklearn import preprocessing 
 import streamlit as st
 import pandas as pd
-import plotly.figure_factory as ff
-import matplotlib.pyplot as plt
-import seaborn as sns
 import pickle
 import random
 
@@ -65,14 +62,3 @@ with st.form("my_form"):
 if submitted:
     clust = loaded_model.predict(data)[0]
     st.write(f'Data belongs to Cluster: {clust} - {cluster_mapping[clust]}')
-
-    # Filter the dataframe for the selected cluster
-    cluster_df1 = df[df['Cluster'] == clust]
-    plt.rcParams["figure.figsize"] = (20, 3)
-
-    # Plot distributions for features in the selected cluster
-    for c in cluster_df1.drop(['Cluster'], axis=1):
-        fig, ax = plt.subplots()
-        sns.histplot(cluster_df1[c], kde=True, ax=ax)  # Use seaborn for better visuals
-        ax.set_title(f'Distribution of {c}')
-        st.pyplot(fig)
