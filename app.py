@@ -9,12 +9,12 @@ filename = 'kmeans_model.pkl'
 loaded_model = pickle.load(open(filename, 'rb'))
 
 # Read the data
-df = pd.read_csv("Clustered_Customer_Data.csv")
+# df = pd.read_csv("Clustered_Customer_Data.csv")
 
 # Streamlit settings
 st.set_option('deprecation.showPyplotGlobalUse', False)
 st.markdown('<style>body{background-color: Blue;}</style>', unsafe_allow_html=True)
-st.title("Market Segmentation")
+st.title("Customer Segmentation by Aditya")
 
 # Cluster mapping
 cluster_mapping = {
