@@ -8,7 +8,7 @@ import pickle
 import random
 
 # Load the saved model
-filename = 'final_model.sav'
+filename = 'kmeans_model.pkl'
 loaded_model = pickle.load(open(filename, 'rb'))
 
 # Read the data
