@@ -5,10 +5,10 @@ import pickle
 import random
 
 # Load the saved model
-# filename = 'final_model.pkl'
-# loaded_model = pickle.load(open(filename, 'rb'))
-filename = 'final_model.sav'
+filename = 'final_model.pkl'
 loaded_model = pickle.load(open(filename, 'rb'))
+# filename = 'final_model.sav'
+# loaded_model = pickle.load(open(filename, 'rb'))
 
 
 # Read the data
@@ -65,6 +65,7 @@ with st.form("my_form"):
 if submitted:
     clust = loaded_model.predict(data)[0]
     st.write(f'Data belongs to Cluster: {clust} - {cluster_mapping[clust]}')
+
 
 
 
