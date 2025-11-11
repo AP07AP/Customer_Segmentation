@@ -5,8 +5,11 @@ import pickle
 import random
 
 # Load the saved model
-filename = 'kmeans_model.pkl'
+# filename = 'kmeans_model.pkl'
+# loaded_model = pickle.load(open(filename, 'rb'))
+filename = 'final_model.sav'
 loaded_model = pickle.load(open(filename, 'rb'))
+
 
 # Read the data
 # df = pd.read_csv("Clustered_Customer_Data.csv")
@@ -62,3 +65,4 @@ with st.form("my_form"):
 if submitted:
     clust = loaded_model.predict(data)[0]
     st.write(f'Data belongs to Cluster: {clust} - {cluster_mapping[clust]}')
+
